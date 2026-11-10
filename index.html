@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Missão Corpo Humano: laboratório digital interativo de Biologia para o Ensino Médio.">
+  <title>Missão Corpo Humano | Biologia</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+<header class="hero">
+  <div class="shell">
+    <div class="eyebrow">BIOLOGIA • ENSINO MÉDIO • LABORATÓRIO DIGITAL</div>
+    <div class="hero-grid">
+      <div>
+        <p class="overline">OPERAÇÃO DE INVESTIGAÇÃO CIENTÍFICA</p>
+        <h1>Missão<br><span>Corpo Humano</span></h1>
+        <p class="hero-copy">11 sistemas. 5 desafios. Uma missão. Investigue como o organismo funciona e descubra por que nenhum sistema trabalha sozinho.</p>
+        <div class="hero-meta"><span>⏱ 100 minutos</span><span>⌁ Atividade individual</span><span>⌘ 11 estações</span></div>
+        <a class="primary-link" href="#central">Iniciar investigação <span>→</span></a>
+      </div>
+      <div class="hero-art" aria-label="Representação ilustrada do corpo humano">
+        <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+        <div class="body-figure">
+          <div class="head"></div><div class="neck"></div><div class="torso"></div>
+          <div class="arm arm-l"></div><div class="arm arm-r"></div>
+          <div class="leg leg-l"></div><div class="leg leg-r"></div>
+          <span class="organ brain">✦</span><span class="organ heart">♥</span><span class="organ lungs">◖◗</span><span class="organ gut">〰</span>
+        </div>
+        <span class="art-label label-one">HOMEOSTASE</span><span class="art-label label-two">INTEGRAÇÃO</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="topnav" aria-label="Navegação principal">
+  <div class="shell nav-inner">
+    <a href="#central">Central</a><a href="#estacoes">Estações</a><a href="#integracao">Integração</a><a href="#escape">Escape Room</a><a href="#referencias">Referências</a>
+  </div>
+</nav>
+
+<main class="shell">
+  <section id="central" class="intro-section">
+    <div class="section-kicker">01 / BRIEFING</div>
+    <h2>Bem-vindo(a), investigador(a)!</h2>
+    <p class="section-lead">Seu desafio é revisar os principais sistemas do corpo humano, compreender suas funções e reconhecer como eles atuam de maneira coordenada para manter a vida.</p>
+    <div class="info-grid">
+      <article class="info-card"><span class="info-icon">◉</span><h3>Investigue</h3><p>Explore os órgãos, as estruturas e as funções de cada sistema.</p></article>
+      <article class="info-card"><span class="info-icon">⌁</span><h3>Conecte</h3><p>Relacione os sistemas em situações reais do cotidiano.</p></article>
+      <article class="info-card"><span class="info-icon">⚑</span><h3>Desbloqueie</h3><p>Resolva cinco enigmas para concluir a missão.</p></article>
+    </div>
+    <div class="notice"><strong>Orientação:</strong> realize a atividade individualmente, leia as explicações e responda aos desafios. Ao concluir o Escape Room, anote o código final e registre sua participação pelo Microsoft Forms disponibilizado pela professora.</div>
+  </section>
+
+  <section id="estacoes" class="section-block">
+    <div class="section-kicker">02 / ESTAÇÕES DE INVESTIGAÇÃO</div>
+    <h2>Explore os 11 sistemas</h2>
+    <p class="section-lead">Selecione uma estação. Leia a síntese, explore as estruturas e responda às duas questões para consolidar sua revisão.</p>
+    <div class="progress-wrap"><div class="progress-label"><span>Estações concluídas</span><strong id="stationCount">0 de 11</strong></div><div class="progress-track"><div id="stationProgress" class="progress-fill"></div></div></div>
+    <div id="stationGrid" class="station-grid" aria-live="polite"></div>
+    <div id="stationDetail" class="station-detail" aria-live="polite">
+      <div class="empty-state"><span>◎</span><h3>Escolha uma estação para começar</h3><p>O conteúdo e as questões aparecerão neste espaço.</p></div>
+    </div>
+  </section>
+
+  <section id="integracao" class="section-block integration-section">
+    <div class="section-kicker">03 / DESAFIO DE INTEGRAÇÃO</div>
+    <h2>O corpo não trabalha sozinho</h2>
+    <p class="section-lead">Leia cada situação e identifique quais sistemas atuam em conjunto. A resposta considera os principais sistemas envolvidos, mas outras estruturas também podem participar.</p>
+    <div id="scenarioList" class="scenario-list"></div>
+  </section>
+
+  <section id="escape" class="section-block escape-section">
+    <div class="section-kicker">04 / DESAFIO FINAL</div>
+    <div class="escape-heading"><div><p class="overline">PROTOCOLO DE EMERGÊNCIA</p><h2>Escape Room<br><span>Operação Corpo Humano</span></h2></div><div class="mission-stamp">MISSÃO<br><b>05</b></div></div>
+    <p class="section-lead">O painel de controle do organismo foi bloqueado. Resolva os cinco enigmas, conquiste um dígito em cada sala e forme o código que restaura o equilíbrio corporal.</p>
+    <div class="escape-status"><div><span>Salas liberadas</span><strong id="roomCount">0/5</strong></div><div class="progress-track"><div id="roomProgress" class="progress-fill"></div></div><div class="timer" id="timer">⏱ 20:00</div></div>
+    <div id="escapeIntro" class="escape-intro"><div class="lock-icon">⌑</div><div><h3>Você aceita a missão?</h3><p>O cronômetro é um recurso de desafio. Se o tempo terminar, você poderá continuar tentando, sem perder o progresso.</p><button id="startEscape" class="button button-light">Iniciar Escape Room</button></div></div>
+    <div id="roomArea" class="room-area hidden" aria-live="polite"></div>
+    <div id="victory" class="victory hidden">
+      <div class="trophy">✦</div><p class="overline">PROTOCOLO RESTAURADO</p><h3>Missão cumprida!</h3>
+      <p>Você resolveu os cinco enigmas e restaurou a integração dos sistemas do corpo humano.</p>
+      <div class="final-code-label">SEU CÓDIGO FINAL</div><div id="finalCode" class="final-code">—</div>
+      <p class="code-instruction">Guarde esse código. Você precisará informá-lo junto ao seu nome completo no Microsoft Forms para registrar sua participação.</p>
+      <button id="copyCode" class="button button-light">Copiar código</button>
+      <a id="formsLink" class="button button-accent hidden" href="#" target="_blank" rel="noopener">Abrir formulário de participação ↗</a>
+    </div>
+  </section>
+
+  <section id="registro" class="section-block registration-section">
+    <div class="section-kicker">05 / REGISTRO DE PARTICIPAÇÃO</div>
+    <h2>Registre sua conclusão</h2>
+    <p class="section-lead">Depois de conquistar o código final, preencha o formulário abaixo com seu nome completo e o código da missão. O registro é feito diretamente no Microsoft Forms.</p>
+    <div id="formsPanel" class="forms-panel">
+      <div class="forms-placeholder"><span class="forms-icon">▤</span><div><h3>Microsoft Forms</h3><p>O formulário institucional será incorporado aqui quando a professora inserir o link de compartilhamento ou de incorporação.</p><p class="small-note">Até lá, conclua o Escape Room e anote seu código. O site não envia nem armazena nomes de estudantes.</p></div></div>
+      <div id="formsEmbed" class="forms-embed hidden"></div>
+      <a id="formsOpen" class="button button-dark hidden" href="#" target="_blank" rel="noopener">Abrir formulário em nova aba ↗</a>
+    </div>
+    <div class="privacy-note">Privacidade: esta versão não coleta nem armazena dados pessoais no site. O nome e o código serão enviados diretamente ao Microsoft Forms configurado pela professora.</div>
+  </section>
+
+  <section id="referencias" class="section-block references-section">
+    <div class="section-kicker">06 / PARA SABER MAIS</div>
+    <h2>Referências e aprofundamento</h2>
+    <p class="section-lead">Materiais de consulta para revisar anatomia, fisiologia e integração dos sistemas do corpo humano.</p>
+    <div class="reference-list">
+      <article><b>BETTS, J. Gordon et al.</b> <i>Anatomy and Physiology 2e.</i> Houston: OpenStax, 2022. Disponível em: <a href="https://openstax.org/details/books/anatomy-and-physiology-2e" target="_blank" rel="noopener">OpenStax – Anatomy and Physiology 2e</a>.</article>
+      <article><b>MARIEB, Elaine N.; HOEHN, Katja.</b> <i>Human Anatomy & Physiology.</i> 11. ed. Pearson, 2018.</article>
+      <article><b>HALL, John E.; HALL, Michael E.</b> <i>Guyton and Hall Textbook of Medical Physiology.</i> 14. ed. Philadelphia: Elsevier, 2021.</article>
+      <article><b>BRASIL. Ministério da Educação.</b> <i>Base Nacional Comum Curricular.</i> Brasília: MEC, 2018. Disponível em: <a href="https://basenacionalcomum.mec.gov.br/" target="_blank" rel="noopener">BNCC</a>.</article>
+    </div>
+    <p class="small-note">Conteúdo didático elaborado para revisão no Ensino Médio. As ilustrações esquemáticas não substituem atlas anatômicos ou materiais clínicos.</p>
+  </section>
+</main>
+
+<footer><div class="shell footer-inner"><div><b>MISSÃO CORPO HUMANO</b><p>Biologia • Ensino Médio • Laboratório digital interativo</p></div><a href="#central">Voltar ao início ↑</a></div></footer>
+</body>
+</html>
